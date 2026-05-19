@@ -31,7 +31,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #apps de sistemas
     'rest_framework',
+    'HRMS',
+    
+    #apps personalizadas
+    'apps.attendance',
+    'apps.departments',
+    'apps.employees',
+    'apps.payroll',
 ]
 
 MIDDLEWARE = [
@@ -110,3 +118,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
