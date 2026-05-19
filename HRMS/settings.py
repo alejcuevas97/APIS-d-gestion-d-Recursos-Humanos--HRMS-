@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #apps de sistemas
     'rest_framework',
     'HRMS',
+    "drf_spectacular",
     
     #apps personalizadas
     'apps.attendance',
@@ -119,4 +120,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API de Recursos Humanos',
+    'DESCRIPTION': 'Documentación de la API para empleados, departamentos, asistencia y nómina.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
