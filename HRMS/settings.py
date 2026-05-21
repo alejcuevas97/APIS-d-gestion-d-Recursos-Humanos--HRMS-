@@ -1,5 +1,7 @@
 from pathlib import Path
 import environ
+import os
+
 
 env=environ.Env()
 environ.Env.read_env()
@@ -150,3 +152,5 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
