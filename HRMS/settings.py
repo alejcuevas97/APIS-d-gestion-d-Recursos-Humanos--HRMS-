@@ -78,13 +78,13 @@ WSGI_APPLICATION = 'HRMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
-"""DATABASES = {
+}"""
+DATABASES = {
     'default': env.db(
         'DATABASE_URL',
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
@@ -95,7 +95,7 @@ DATABASES['default']['CONN_MAX_AGE'] = env.int('CONN_MAX_AGE', default=600)
 # For cloud providers that require SSL for PostgreSQL connections.
 if env.bool('DATABASE_REQUIRE_SSL', default=False):
     DATABASES['default'].setdefault('OPTIONS', {})['sslmode'] = 'require'
-   """
+   
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
