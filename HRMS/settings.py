@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'apps.departments',
     'apps.employees',
     'apps.payroll',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,7 +84,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""DATABASES = {
+    'default': env.db(
+        'DATABASE_URL',
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
+}
+DATABASES['default']['CONN_MAX_AGE'] = env.int('CONN_MAX_AGE', default=600)
 
+# For cloud providers that require SSL for PostgreSQL connections.
+if env.bool('DATABASE_REQUIRE_SSL', default=False):
+    DATABASES['default'].setdefault('OPTIONS', {})['sslmode'] = 'require'
+   """
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -130,3 +143,10 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+CORS_ALLOWED_ORIGINS = [ 
+    
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
