@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 ```env
 SECRET_KEY=tu_secreto_aqui
-DEBUG=True
+DEBUG=False
 ```
 
 4. Aplicar migraciones:
@@ -135,11 +135,28 @@ Base API: `/api/v1/`
 - `fecha_pago` (DateField)
 - `salario_neto` (campo calculado)
 
+## Pruebas unitarias
+
+El proyecto incluye pruebas unitarias para los modelos y los endpoints CRUD básicos. Para ejecutar todas las pruebas:
+
+```powershell
+.\.venv\Scripts\python.exe manage.py test
+```
+
+Las pruebas cubren:
+
+- creación y listado de empleados
+- creación y listado de departamentos
+- creación y listado de registros de asistencia
+- creación y listado de nóminas
+- cálculo de `salario_neto` en el modelo `Nomina`
+
 ## Consideraciones
 
 - Actualmente no hay autenticación o permisos especiales configurados en la API.
 - La base de datos utilizada por defecto es `SQLite` en `db.sqlite3`.
 - El proyecto usa `drf-spectacular` para generar el esquema OpenAPI.
+- Se añadió `apps/__init__.py` para que el paquete `apps` sea reconocido correctamente por Django y los tests.
 
 ## Comandos útiles
 
@@ -147,6 +164,7 @@ Base API: `/api/v1/`
 - `python manage.py migrate`
 - `python manage.py createsuperuser`
 - `python manage.py runserver`
+- `python manage.py test`
 
 ## Estructura del proyecto
 
